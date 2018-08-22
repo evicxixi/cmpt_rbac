@@ -1,0 +1,33 @@
+# CRM权限组件
+1. 建立Django项目，新建两个app（rbac，web）：
+    - app（rbac）：权限类的所有东西（3个类5张表）。
+    - 随便写点业务逻辑。
+2. 找到url并使用DjangoAdmin录入权限表。
+3. 建立角色。
+4. 写代码：通过中间件。
+    - 用户登录：用户登录时在session中储存当前用户的所有权限url（也可以储存到redis）。
+    - 编写中间件，储存具有权限的url及菜单：
+        - 获取当前用户的请求url（request.path_info）。
+        - 使用re匹配re.match()进行权限校验。并存入session。
+        - 为用户动态显示自己的菜单：Permission表添加field（是否可做菜单、icon），在session中储存当前用户所有可用manu。为减少耦合度可用自定义标签（Library）。判断是否当前url添加class=active。
+5. 封装为组件。
+    - 总结：共写了4个位置的代码（login、session、权限、自定义标签、自定义模板）。
+    - 封装为独立组件：
+        - 权限初始化模块：将session储存权限信息部分独立成一个权限初始化模块。
+        - 将相关文件均放入app（rbac），包括（权限初始化模块、权限验证中间件、自定义标签、自定义模板及css样式（注意路径问题：可放深一层，及静态文件引入问题））。
+
+## 文件结构
+- app（rbac）:权限组件
+    - md
+        - rbac.py:url权限验证中间件
+    - service
+        - init_permission.py:权限和菜单信息初始化，将权限和菜单信息放入session
+    - template
+        - rbac
+            - menu.html:自定义tag所需模板
+    - templatetags
+        - rbac.py:自定义tag
+
+- app（web）:主程序
+    - views
+        - auth.py:登录视图函数
