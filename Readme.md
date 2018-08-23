@@ -1,4 +1,4 @@
-# CRM权限组件
+# cmpt_rbac：CRM权限组件
 1. 建立Django项目，新建两个app（rbac，web）：
     - app（rbac）：权限类的所有东西（3个类5张表）。
     - 随便写点业务逻辑。
