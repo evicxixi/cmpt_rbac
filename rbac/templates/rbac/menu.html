@@ -1,10 +1,18 @@
-<div class="static-menu">
-    {% for item in menu_list %}
-    <a href={{item.url}} class={{item.class}}>
-        <span class="icon-wrap">
-        <i class="{{ item.icon }}"></i>
-        </span>
-        {{ item.title }}
-    </a>
+<!-- 一级菜单 & 二级菜单 -->
+<div class="multi-menu">
+    {% for item in menu_dict.values %}
+    <div class="item">
+        <div class="title {{item.class}}">
+            <span class="icon-wrap">
+            <i class="{{ item.icon }}"></i>
+            </span>
+            {{ item.title }}
+        </div>
+        <div class="body">
+            {% for children in item.children %}
+            <a href="{{ children.url }}" class="{{ children.class }}">{{ children.title }}</a>
+            {% endfor %}
+        </div>
+    </div>
     {% endfor %}
 </div>

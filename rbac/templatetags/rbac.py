@@ -7,10 +7,22 @@ register = Library()
 
 @register.inclusion_tag('rbac/menu.html')
 def menu(request):
-    menu_list = request.session.get(settings.MENU_SESSION_KEY)
-    for item in menu_list:
-        if re.match(item['url'], request.path_info):
-            item['class'] = 'active'
+    menu_dict = request.session.get(settings.MENU_SESSION_KEY)
 
-    # print('menu_list', menu_list)
-    return {settings.MENU_SESSION_KEY: menu_list}
+    # 为当前的一级、二级菜单标记class = 'active'
+    for item in menu_dict.values():
+        for children in item['children']:
+            if re.match(children['url'], request.path_info):
+                item['class'] = 'active'
+                children['class'] = 'active'
+                break
+
+    # ret = menu_dict
+    # print('templatetags > menu_dict', type(ret), ret)
+    return {settings.MENU_SESSION_KEY: menu_dict}
+
+
+@register.inclusion_tag('rbac/breadcrumb.html')
+def breadcrumb(request):
+    breadcrumb_list = request.session.get('breadcrumb_list')
+    return {'breadcrumb_list': breadcrumb_list}

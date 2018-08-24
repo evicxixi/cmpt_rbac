@@ -169,8 +169,8 @@ FILE_UPLOAD_DIRECTORY_PERMISSIONS = None
 
 
 # ########################## 权限相关 #######################
-PERMISSION_SESSION_KEY = "permission_list"
-MENU_SESSION_KEY = "menu_list"
+PERMISSION_SESSION_KEY = "permission_dict"
+MENU_SESSION_KEY = "menu_dict"
 VALID_URL = [
     '^/auth/$',
     '^/login/$',
