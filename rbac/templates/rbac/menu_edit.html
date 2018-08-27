@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <!-- <div class="luffy-container"> -->
+    <div class="container">
+        <div class="row">
+            <div class="card col-6 mt-2 ml-2">
+              <div class="card-body">
+                <h5 class="card-title">菜单编辑 & 添加</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <br>
+                <form method="post" novalidate class="card-text">
+                    <div class="form-group">
+                    {% csrf_token %}
+                    {% for item in form %}
+                        {% if forloop.last %}
+                        {{ item }}
+                        {% else %}
+                        {{ item }}
+                        <br>
+                        {% endif %}
+                    {% endfor %}
+                    <br>
+                    <input type="submit" class="btn btn-primary" value="提交">
+                    </div>
+                </form>
+              </div>
+            </div><!-- card -->
+        </div><!-- row -->
+    </div>
+{% endblock %}

@@ -55,6 +55,8 @@ def init_permission(request, user_obj):
             'title': item['permissions__title'],
             'url': item['permissions__url'],
             'pid': item['permissions__parent_id'],
+            'mid': item['permissions__menu_id'],
+            'menu_title': item['permissions__menu__title'],
         }
 
         menu_id = item['permissions__menu_id']
@@ -78,28 +80,6 @@ def init_permission(request, user_obj):
                 'url': item['permissions__url'],
             })
 
-        # if item['permissions__menu_id']:
-        #     print('<<<<<<<<<<<<<<')
-        #     if item['permissions__menu_id'] not in menu_dict:
-        #         menu_dict[item['permissions__menu_id']] = {
-        #             'title': item['permissions__menu__title'],
-        #             'icon': item['permissions__menu__icon'],
-        #             'children': []
-        #         }
-        #     else:
-
-        # print('>>>>>>>>>>>>>')
-
-        # ret = item['permissions__parent_id']
-        # print('ret', type(ret), ret)
-        # if item['permissions__parent_id'] in menu_dict:
-        #     ret = item['permissions__parent_id']
-        #     print('ret', type(ret), ret)
-        #     menu_dict[item['permissions__parent_id']]['children'].append({
-        #         'id': item['permissions__id'],
-        #         'title': item['permissions__title'],
-        #         'url': item['permissions__url'],
-        #     })
     # ret = permission_dict
     # print('ret', len(ret), type(ret), ret)
     # ret = menu_dict

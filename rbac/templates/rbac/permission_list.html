@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <!-- <div class="luffy-container"> -->
+    <div class="container">
+
+<!--         <div style="margin: 5px 0;">
+            <a class="btn btn-success" href="/permission/add/">
+                <i class="fa fa-plus-square" aria-hidden="true"></i> 添加菜单
+            </a>
+        </div> -->
+
+        <div class="row">
+            <div class="col-2">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        成员列表
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for row in user_list %}
+                        <li class="list-group-item">
+                            {{ row.id }} {{ row.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div><!-- card -->
+            </div>
+            <div class="col-3">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        菜单列表
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for row in role_list %}
+                        <li class="list-group-item">{{ row.id }} {{ row.title }}
+
+                            <a style="color: #333333;" href="/permission/edit/{{ row.id }}/">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </a>|<a style="color: #d9534f;" href="/permission/del/{{ row.id }}/">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div><!-- card -->
+            </div>
+            <div class="col-6">
+                <div class="card mt-2">
+                    <div class="card-header">
+                        权限列表
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for row in permission_list %}
+                        <li class="list-group-item">{{ row.id }} {{ row.title }}
+
+                            <a style="color: #333333;" href="/permission/edit/{{ row.id }}/">
+                                <i class="fa fa-edit" aria-hidden="true"></i>
+                            </a>|<a style="color: #d9534f;" href="/permission/del/{{ row.id }}/">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div><!-- card -->
+            </div>
+        </div><!-- row -->
+
+    </div>
+{% endblock %}

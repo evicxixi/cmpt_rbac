@@ -1,4 +1,4 @@
-<ol class="breadcrumb no-radius no-margin" style="border-bottom: 1px solid #ddd;">
+<!-- <ol class="breadcrumb no-radius no-margin" style="border-bottom: 1px solid #ddd;">
 
     {% for item in breadcrumb_list %}
     <li class="active">
@@ -6,4 +6,14 @@
     </li>
     {% endfor %}
 
-</ol>
+</ol> -->
+
+<!-- <nav aria-label="breadcrumb"> -->
+  <ol class="breadcrumb no-radius no-margin">
+    {% for item in breadcrumb_list %}
+    <li class="breadcrumb-item active">
+        <a href={{ item.url }}>{{item.title}}</a>
+    </li>
+    {% endfor %}
+  </ol>
+<!-- </nav> -->

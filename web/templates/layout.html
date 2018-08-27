@@ -4,9 +4,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>路飞学城</title>
+    <title>RBAC 权限组件DOMO</title>
     <link rel="shortcut icon" href="{% static 'imgs/luffy-study-logo.png' %} ">
-    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %} "/>
+    <!-- <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %} "/> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.css' %} "/> -->
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/commons.css' %} "/>
@@ -102,7 +103,7 @@
         <div class="logo-area left">
             <a href="#">
                 <img class="logo" src="{% static 'imgs/logo.svg' %}">
-                <span style="font-size: 18px;">路飞学城 </span>
+                <span style="font-size: 18px;">RBAC 权限组件DOMO </span>
             </a>
         </div>
 
@@ -177,6 +178,7 @@
             </ol> -->
 
             {% breadcrumb request %}
+
         </div>
         {% block content %} {% endblock %}
     </div>

@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="luffy-container">
+        <form method="post" novalidate>
+            <div class="form-group">
+            {% csrf_token %}
+            {% for item in form %}
+            {{ item }}
+            {% endfor %}
+            <br>
+            <input type="submit" class="btn btn-primary" value="提交修改">
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

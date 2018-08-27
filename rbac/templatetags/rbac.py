@@ -1,6 +1,7 @@
 from django.template import Library
 from django.conf import settings
 import re
+from rbac import models
 
 register = Library()
 
@@ -25,4 +26,15 @@ def menu(request):
 @register.inclusion_tag('rbac/breadcrumb.html')
 def breadcrumb(request):
     breadcrumb_list = request.session.get('breadcrumb_list')
+    # print('breadcrumb_list', type(breadcrumb_list), breadcrumb_list)
     return {'breadcrumb_list': breadcrumb_list}
+
+
+# @register.inclusion_tag('rbac/role_list.html')
+# def role_list(request):
+#     # role_list = models.Role.objects.all().values('title')
+
+#     role_list = ['233', '322', '366']
+#     role_list = '222'
+#     return {'role_list': role_list}
+#     # return role_list
