@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rbac.apps.RbacConfig',
     'web.apps.WebConfig',
+    'stark.apps.StarkConfig',
     'rest_framework',
 ]
 

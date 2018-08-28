@@ -37,3 +37,17 @@ def permission_edit(request, id):
             form.save()    # 3. 存库
             return redirect('/permission/list/')
     return render(request, 'rbac/permission_edit.html', {'form': form})
+
+
+def permission_multi(request):
+    if request.method == "GET":
+        permission_obj = models.Permission.objects.filter(id=1).first()
+        form = permission.Permission(
+            instance=permission_obj)    # get时生成空表单 并渲染到前端
+    else:
+        form = permission.Permission(request.POST)    # post时：1. 校验前端数据是否合法
+        if form.is_valid():    # 2. 通过验证
+            print('通过验证')
+            form.save()    # 3. 存库
+            return redirect('/permission/list/')
+    return render(request, 'rbac/permission_multi.html', locals())

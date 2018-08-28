@@ -6,8 +6,7 @@ from django.db.models import Q
 
 def menu_list(request):
 
-    id = request.GET.get('id', 0)
-    id = int(id)
+    id = int(request.GET.get('id', 0))
     # ret = id
     # print('id', type(ret), ret)
 
@@ -16,11 +15,13 @@ def menu_list(request):
     # print('ret', type(ret), ret)
 
     # 获取指定menu.id的permission.id
-    mid = models.Permission.objects.filter(menu_id=id).first().id
     if not id:   # 获取所有menu的二级及三级菜单
         permission_queryset = models.Permission.objects.all().values(
             'id', 'title', 'url', 'parent', 'name')
     else:   # 获取指定menu.id的二级及三级菜单
+        mid = models.Permission.objects.filter(menu_id=id).first().id
+        # ret = mid
+        # print('ret', type(ret), ret)
         permission_queryset = models.Permission.objects.filter(Q(menu_id=id) | Q(parent_id=mid)).values(
             'id', 'title', 'url', 'parent', 'name')
 

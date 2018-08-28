@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ac47a565-c427-44c3-b1eb-c75e7766b336" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/service/init_permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/service/init_permission.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/templates/rbac/breadcrumb.html" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/templates/rbac/breadcrumb.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/templatetags/rbac.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/templatetags/rbac.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmpt_rbac/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmpt_rbac/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/forms/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/forms/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/templates/rbac/menu_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/templates/rbac/menu_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/views/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/views/menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/views/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/views/permission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/auth.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -103,8 +104,30 @@
     <session id="-1135631356">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="py" value="53" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="53" />
         </counts>
       </usages-collector>
     </session>
@@ -114,20 +137,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="235">
+              <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/stark/apps.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-              <folding>
-                <element signature="e#22#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="112">
+              <caret line="7" column="28" selection-start-line="3" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -150,7 +170,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="das://a406a6bc-749e-49ec-87f6-991bc7321a54/schema/main/table/rbac_permission">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -262,6 +282,7 @@
         <option value="$PROJECT_DIR$/web/templates/payment_edit.html" />
         <option value="$PROJECT_DIR$/web/urls.py" />
         <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/stark/apps.py" />
       </list>
     </option>
   </component>
@@ -271,11 +292,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="4" />
-    <option name="y" value="21" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1" />
     <option name="width" value="1362" />
-    <option name="height" value="747" />
+    <option name="height" value="768" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -404,18 +424,27 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="city_permission" type="b2602c69:ProjectViewProjectNode" />
-              <item name="city_permission" type="462c0819:PsiDirectoryNode" />
+              <item name="cmpt_rbac" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cmpt_rbac" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmpt_rbac" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cmpt_rbac" type="462c0819:PsiDirectoryNode" />
+              <item name="stark" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cmpt_rbac" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -535,14 +564,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="21" width="1362" height="747" extended-state="0" />
+    <frame x="1" y="0" width="1362" height="768" extended-state="6" />
     <layout>
-      <window_info id="Project" order="0" visible="true" weight="0.14545454" />
+      <window_info id="Project" order="0" visible="true" weight="0.14772727" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4969278" visible="true" weight="0.55419844" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4969278" visible="true" weight="0.39349112" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -550,7 +579,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="manage.py@luffy_permission" order="9" weight="0.16666667" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4969278" weight="0.5064935" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4969278" weight="0.50591713" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5030722" side_tool="true" weight="0.6839827" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32939914" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
@@ -705,13 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -722,14 +744,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://a406a6bc-749e-49ec-87f6-991bc7321a54/schema/main/table/rbac_userinfo_roles">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://a406a6bc-749e-49ec-87f6-991bc7321a54/schema/main/table/rbac_role_permissions">
+    <entry file="das://a406a6bc-749e-49ec-87f6-991bc7321a54/schema/main/table/django_session">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -764,7 +779,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://a406a6bc-749e-49ec-87f6-991bc7321a54/schema/main/table/django_session">
+    <entry file="das://a406a6bc-749e-49ec-87f6-991bc7321a54/schema/main/table/rbac_role_permissions">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://a406a6bc-749e-49ec-87f6-991bc7321a54/schema/main/table/rbac_userinfo_roles">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -775,6 +797,20 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="235">
+          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stark/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="28" selection-start-line="3" selection-end-line="9" />
         </state>
       </provider>
     </entry>

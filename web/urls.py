@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from web.views import customer, payment, auth
-from rbac.views import role, menu, permission
+from rbac.views import role, menu, permission, url_list
 
 urlpatterns = [
     url(r'^auth/$', auth.AuthView.as_view({'get': 'login', 'post': 'auth'})),
@@ -29,4 +29,9 @@ urlpatterns = [
     url(r'^permission/list/$', permission.permission_list),
     url(r'^permission/add/$', permission.permission_add),
     url(r'^permission/edit/(?P<id>\d+)/$', permission.permission_edit),
+    url(r'^permission/multi/$', permission.permission_multi),
+
+    url(r'^url/list/$', url_list.url_list),
+    # url(r'^menu/add/$', menu.menu_add),
+    # url(r'^menu/edit/(?P<id>\d+)/$', menu.menu_edit),
 ]

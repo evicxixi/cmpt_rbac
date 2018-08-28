@@ -9,8 +9,8 @@
                 <div class="card mt-2">
                     <nav class="navbar navbar-light bg-light">
                         <a class="navbar-brand" href="#">菜单列表</a>
-                        <a class="btn btn-sm btn-outline-success" href="/menu/add/">
-                            <i class="fa fa-plus-circle"></i> 新建
+                        <a class="btn btn-sm btn-primary" href="/menu/add/">
+                            <i class="fa fa-plus-square"></i> 新建
                         </a>
                     </nav>
 
@@ -50,17 +50,12 @@
             </div>
             <div class="col-9">
                 <div class="card mt-2">
-                <div class="card-header">
-                    <i class="fa fa-book" aria-hidden="true"></i> 菜单管理
-                    <div class="btn-group float-right">
-                    <a class="btn btn-sm btn-outline-success" href="/permission/add/">
-                        <i class="fa fa-plus-circle"></i> 新建
+                <nav class="navbar navbar-light bg-light">
+                    <a class="navbar-brand" href="#">权限列表</a>
+                    <a class="btn btn-sm btn-primary" href="/permission/add/">
+                        <i class="fa fa-plus-square"></i> 新建
                     </a>
-                    <a class="btn btn-sm btn-outline-success" href="/permission/multi/">
-                        <i class="fa fa-sliders"></i> 批量管理
-                    </a>
-                    </div>
-                </div>
+                </nav>
 
                 <table class="table table-hover">
                     <thead>
@@ -75,7 +70,7 @@
                         {% for row in permission_dict.values %}
                             <div>
                             <tr class="table-sm table-primary">
-                                <th> <i class="fa fa-caret-right"></i> </th>
+                                <th>{{ row.id }}</th>
                                 <td>{{ row.title }}</td>
                                 <td>{{ row.url }}</td>
                                 <td>
