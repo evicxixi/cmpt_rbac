@@ -18,7 +18,8 @@ from django.contrib import admin
 from web.views import auth
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls, name='admin'),
+    url(r'^rbac/', include('rbac.urls', namespace='rbac')),
     url(r'^', include('web.urls')),
     # url(r'^auth/$', auth.AuthView.as_view({'post': 'auth'})),
 

@@ -6,14 +6,60 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="card mt-2 text-center">
+                <form method="post">
+                {{ formset.management_form }}
+                {% csrf_token %}
+                <div class="card border-secondary mt-2 text-center">
                     <div class="card-header">
-                        <span class="float-left"><i class="fa fa-list"></i> 待新建权限列表</span>
+                        <span class="float-left"><i class="fa fa-plus-circle"></i> 待新建权限</span>
                         <span class="text-secondary">备注：路由系统中自动发现且数据库中不存在的路由。</span>
 
-                        <a class="float-right" href="/menu/add/">
-                            <i class="fa fa-plus-circle"></i> 新建
+                        <a class="float-right" href="/rbac/menu/add/">
+                            <i class="fa fa-plus-circle"></i> 点击新建
                         </a>
+                    </div>
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>URL</th>
+                                <th>别名</th>
+                                <th>所属菜单</th>
+                                <th>根权限</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in router_dict.values %}
+                            
+                            <tr class="table-warning">
+                                <!-- {{ row }} -->
+                                <!-- <th>{{ row.id }}</th> -->
+                                <td> {{row.name}} </td>
+                                <td> {{ row.url }} </td>
+                                <td>
+                                    <a href="/rbac/menu/edit/{{ row.id }}/">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    |
+                                    <a href="/rbac/menu/del/{{ row.id }}/" class="text-danger">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div><!-- card -->
+                </form>
+
+                <form method="post">
+                {{ formset.management_form }}
+                {% csrf_token %}
+                <div class="card border-secondary mt-2 text-center">
+                    <div class="card-header">
+                        <span class="float-left"><i class="fa fa-trash-o"></i> 待删除权限</span>
+                        <span class="text-secondary">备注：数据库中存在，但路由系统中不存在的路由。</span>
                     </div>
 <!--                     <div class="card-body">
                         <p class="card-text">注意：路由系统中自动发现且数据库中不存在的路由。</p>
@@ -40,11 +86,11 @@
                                 <td> <a href="?id={{row.id}}">{{ row.title }}</a> </td>
                                 <td><i class="{{ row.icon }}"></i></td>
                                 <td>
-                                    <a href="/menu/edit/{{ row.id }}/">
+                                    <a href="/rbac/menu/edit/{{ row.id }}/">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     |
-                                    <a href="/menu/del/{{ row.id }}/" class="text-danger">
+                                    <a href="/rbac/menu/del/{{ row.id }}/" class="text-danger">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>
@@ -52,52 +98,43 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                    <div class="card-footer text-muted">
-                        2 days ago
-                    </div>
                 </div><!-- card -->
-                <div class="card mt-2 text-center">
-                    <div class="card-header">
-                        <span class="float-left"><i class="fa fa-list"></i> 待新建权限列表</span>
-                        <span class="text-secondary">备注：路由系统中自动发现且数据库中不存在的路由。</span>
+                </form>
 
-                        <a class="float-right" href="/menu/add/">
-                            <i class="fa fa-plus-circle"></i> 新建
-                        </a>
+                <form method="post">
+                {{ formset.management_form }}
+                {% csrf_token %}
+                <div class="card border-secondary mt-2 text-center">
+                    <div class="card-header">
+                        <span class="float-left"><i class="fa fa-refresh"></i> 待更新权限</span>
+                        <span class="text-secondary">备注：数据库和路由系统都存在的路由。</span>
+
+                        <button class="right btn btn-primary btn-sm" href="/rbac/permission/multi/">
+                            <i class="fa fa-refresh"></i> 点击更新
+                        </button>
                     </div>
-<!--                     <div class="card-body">
-                        <p class="card-text">注意：路由系统中自动发现且数据库中不存在的路由。</p>
-                    </div> -->
+
                     <table class="table table-sm table-hover">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <!-- <th>ID</th> -->
                                 <th>名称</th>
                                 <th>URL</th>
                                 <th>别名</th>
-                                <th>所属菜单</th>
                                 <th>根权限</th>
+                                <th>所属菜单</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for row in menu_queryset %}
-                            {% if row.id == id %}
-                            <tr class="table-warning">
-                            {% else %}
+                            {% for form in formset %}
                             <tr>
-                            {% endif %}
-                                <!-- <th>{{ row.id }}</th> -->
-                                <td> <a href="?id={{row.id}}">{{ row.title }}</a> </td>
-                                <td><i class="{{ row.icon }}"></i></td>
-                                <td>
-                                    <a href="/menu/edit/{{ row.id }}/">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    |
-                                    <a href="/menu/del/{{ row.id }}/" class="text-danger">
-                                        <i class="fa fa-trash-o"></i>
-                                    </a>
-                                </td>
+                                {% for row in form %}
+                                    {% if forloop.first %}
+                                    <td class="hide" style="display: none;">{{ row }} {{ row.errors.0 }} </td>
+                                    {% else %}
+                                    <td>{{ row }} {{ row.errors.0 }} </td>
+                                    {% endif %}
+                                {% endfor %}
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -106,6 +143,7 @@
                         2 days ago
                     </div>
                 </div><!-- card -->
+                </form>
 
 
             </div>

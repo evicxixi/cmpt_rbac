@@ -9,31 +9,52 @@ class Permission(forms.ModelForm):
         fields = '__all__'
 
         widgets = {    # 单独定制前端渲染此field
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '权限名称为8-12个字符'}),
-            'url': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '含正则的URL'}),
-            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'URL别名'}),
-            'parent': forms.Select(attrs={'class': 'form-control'}),
-            'menu': forms.Select(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control form-control-sm', 'placeholder': '权限名称为8-12个字符'}),
+            'url': forms.TextInput(attrs={'class': 'form-control form-control-sm', 'placeholder': '含正则的URL'}),
+            'name': forms.TextInput(attrs={'class': 'form-control form-control-sm', 'placeholder': 'URL别名'}),
+            'parent': forms.Select(attrs={'class': 'form-control form-control-sm'}),
+            'menu': forms.Select(attrs={'class': 'form-control form-control-sm'}),
 
         }
 
 
-# 生成formset对象，关键词‘extra’决定生成form时默认填充的数据之外，再生成几个空form。
-PermissionFormSet = forms.formset_factory(models.Permission, extra=10)
+class MultiPermission(forms.Form):
+    attrs = {'class': "form-control form-control-sm"}
+    id = forms.IntegerField(
+        widget=forms.HiddenInput(),
+        required=False
+    )
+    title = forms.CharField(
+        widget=forms.TextInput(attrs=attrs),
+    )
+    url = forms.CharField(
+        widget=forms.TextInput(attrs=attrs),
+    )
+    name = forms.CharField(required=False,
+                           widget=forms.TextInput(attrs=attrs),
+                           )
+    parent = forms.ChoiceField(
+        choices=[(None, '-----')],
+        widget=forms.Select(attrs=attrs),
+        required=False,
+    )
+    menu = forms.ChoiceField(
+        choices=[(None, '-----')],
+        widget=forms.Select(attrs=attrs),
+        required=False,
 
-formset = PermissionFormSet(    # 实例化
-    initial=[
-        {
-            'id': 1,
-            'user': 'nut',
-            'pwd': '123',
-            'email': 'xxxx@live.com'
-        },    # 生成form时默认填充的数据
-        {
-            'id': 2,
-            'user': 'hat',
-            'pwd': '1231',
-            'email': 'xxxxd@live.com'
-        }
-    ]
-)
+    )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['parent'].choices += models.Permission.objects.filter(parent_id__isnull=True).exclude(
+            menu__isnull=True).values_list('id', 'title')
+        self.fields['menu'].choices += models.Menu.objects.values_list(
+            'id', 'title')
+
+    def clean_pid_id(self):
+        menu = self.cleaned_data.get('menu_id')
+        pid = self.cleaned_data.get('pid_id')
+        if menu and pid:
+            raise forms.ValidationError('菜单和根权限同时只能选择一个')
+        return pid

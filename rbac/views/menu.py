@@ -45,7 +45,7 @@ def menu_list(request):
                 'name': item['name'],
             })
     ret = permission_dict
-    print('permission_dict', type(ret), ret)
+    # print('permission_dict', type(ret), ret)
 
     return render(request, 'rbac/menu_list.html', locals())
 

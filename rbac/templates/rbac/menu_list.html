@@ -9,7 +9,7 @@
                 <div class="card mt-2">
                     <nav class="navbar navbar-light bg-light">
                         <a class="navbar-brand" href="#">菜单列表</a>
-                        <a class="btn btn-sm btn-outline-success" href="/menu/add/">
+                        <a class="btn btn-sm btn-outline-success" href="/rbac/menu/add/">
                             <i class="fa fa-plus-circle"></i> 新建
                         </a>
                     </nav>
@@ -34,11 +34,11 @@
                                 <td> <a href="?id={{row.id}}">{{ row.title }}</a> </td>
                                 <td><i class="{{ row.icon }}"></i></td>
                                 <td>
-                                    <a href="/menu/edit/{{ row.id }}/">
+                                    <a href="/rbac/menu/edit/{{ row.id }}/">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     |
-                                    <a href="/menu/del/{{ row.id }}/" class="text-danger">
+                                    <a href="/rbac/menu/del/{{ row.id }}/" class="text-danger">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>
@@ -53,10 +53,10 @@
                 <div class="card-header">
                     <i class="fa fa-book" aria-hidden="true"></i> 菜单管理
                     <div class="btn-group float-right">
-                    <a class="btn btn-sm btn-outline-success" href="/permission/add/">
+                    <a class="btn btn-sm btn-outline-success" href="/rbac/permission/add/">
                         <i class="fa fa-plus-circle"></i> 新建
                     </a>
-                    <a class="btn btn-sm btn-outline-success" href="/permission/multi/">
+                    <a class="btn btn-sm btn-outline-success" href="/rbac/permission/multi/">
                         <i class="fa fa-sliders"></i> 批量管理
                     </a>
                     </div>
@@ -79,11 +79,11 @@
                                 <td>{{ row.title }}</td>
                                 <td>{{ row.url }}</td>
                                 <td>
-                                    <a href="/permission/edit/{{ row.id }}/">
+                                    <a href="/rbac/permission/edit/{{ row.id }}/">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     |
-                                    <a href="/permission/del/{{ row.id }}/" class="text-danger">
+                                    <a href="/rbac/permission/del/{{ row.id }}/" class="text-danger">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>
@@ -94,11 +94,11 @@
                                     <td>{{ children.title }}</td>
                                     <td>{{ children.url }}</td>
                                     <td>
-                                        <a href="/permission/edit/{{ children.id }}/">
+                                        <a href="/rbac/permission/edit/{{ children.id }}/">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         |
-                                        <a href="/permission/del/{{ children.id }}/" class="text-danger">
+                                        <a href="/rbac/permission/del/{{ children.id }}/" class="text-danger">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>

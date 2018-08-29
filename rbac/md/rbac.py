@@ -11,7 +11,7 @@ def get_permission_dict(permission_dict, id):
     模板：{'title': '查看客户列表', 'url': '/customer/list/'}
     '''
     for item in permission_dict.values():
-        print(item['id'], item['title'], item['url'])
+        # print(item['id'], item['title'], item['url'])
         if id == item['id']:
             return {
                 'title': item['title'],
