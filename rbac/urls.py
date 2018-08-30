@@ -15,5 +15,7 @@ urlpatterns = [
     url(r'^permission/add/$', permission.permission_add, name='permission_add'),
     url(r'^permission/edit/(?P<id>\d+)/$',
         permission.permission_edit, name='permission_edit'),
+    url(r'^permission/del/(?P<id>\d+)/$',
+        permission.permission_del, name='permission_del'),
     url(r'^permission/multi/$', permission.permission_multi, name='permission_multi'),
 ]

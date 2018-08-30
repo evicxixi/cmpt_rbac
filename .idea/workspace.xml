@@ -3,15 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ac47a565-c427-44c3-b1eb-c75e7766b336" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmpt_rbac/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmpt_rbac/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/forms/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/forms/permission.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/md/rbac.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/md/rbac.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/templates/rbac/menu_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/templates/rbac/menu_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/templates/rbac/permission_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/templates/rbac/permission_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rbac/templates/rbac/permission_multi.html" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/templates/rbac/permission_multi.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbac/views/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/views/menu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rbac/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rbac/views/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/rbac/views/permission.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/templates/auth.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/auth.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/templates/layout.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,8 +136,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+            <state relative-caret-position="320">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -249,6 +245,8 @@
       <find>nav</find>
       <find>.nav {</find>
       <find>.nav .left-menu .menu-item</find>
+      <find>rbac:role_del</find>
+      <find>/auth/</find>
     </findStrings>
     <dirStrings>
       <dir>/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/site-packages/django</dir>
@@ -296,7 +294,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1366" />
+    <option name="width" value="1370" />
     <option name="height" value="768" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -573,7 +571,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4969278" visible="true" weight="0.68195266" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4969278" visible="true" weight="0.6316568" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -745,8 +743,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="22" column="1" selection-start-line="22" selection-start-column="1" selection-end-line="22" selection-end-column="1" />
+        <state relative-caret-position="320">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
         </state>
       </provider>
     </entry>

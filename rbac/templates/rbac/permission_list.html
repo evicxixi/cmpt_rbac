@@ -35,9 +35,9 @@
                         {% for row in role_list %}
                         <li class="list-group-item">{{ row.id }} {{ row.title }}
 
-                            <a style="color: #333333;" href="/permission/edit/{{ row.id }}/">
-                                <i class="fa fa-edit" aria-hidden="true"></i>
-                            </a>|<a style="color: #d9534f;" href="/permission/del/{{ row.id }}/">
+                            <a href="/rbac/permission/edit/{{ row.id }}/">
+                                <i class="fa fa-edit"></i>
+                            </a>|<a href="/rbac/permission/del/{{ row.id }}/" class="text-danger">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </li>
@@ -54,9 +54,9 @@
                         {% for row in permission_list %}
                         <li class="list-group-item">{{ row.id }} {{ row.title }}
 
-                            <a style="color: #333333;" href="/permission/edit/{{ row.id }}/">
-                                <i class="fa fa-edit" aria-hidden="true"></i>
-                            </a>|<a style="color: #d9534f;" href="/permission/del/{{ row.id }}/">
+                            <a href="/rbac/permission/edit/{{ row.id }}/">
+                                <i class="fa fa-edit"></i>
+                            </a>|<a href="/rbac/permission/del/{{ row.id }}/" class="text-danger">
                                 <i class="fa fa-trash-o"></i>
                             </a>
                         </li>
