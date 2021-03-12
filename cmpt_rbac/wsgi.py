@@ -1,5 +1,5 @@
 """
-WSGI config for luffy_permission project.
+WSGI config for RBAC project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
