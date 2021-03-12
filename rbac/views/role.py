@@ -2,9 +2,17 @@ from django.shortcuts import render, redirect
 from rbac import models
 from rbac.forms import role   # 引入自定义forms模块
 
+import json
+from django.core import serializers
+
 
 def role_list(request):
     role_list = models.Role.objects.all()
+
+    # 将m2m字段聚合成list 避免每一个m2m字段的值单独一条
+    role_list = serializers.serialize("json", role_list)
+    role_list = json.loads(role_list)
+    # print(type(role_list), role_list)
     return render(request, 'rbac/role_list.html', locals())
 
 

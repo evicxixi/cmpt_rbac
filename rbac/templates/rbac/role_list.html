@@ -14,17 +14,15 @@
                 <th>ID</th>
                 <th>角色姓名</th>
                 <th>权限数量</th>
-                <th>权限</th>
                 <th>选项</th>
             </tr>
             </thead>
             <tbody>
             {% for row in role_list %}
                 <tr>
-                    <td>{{ row.id }}</td>
-                    <td>{{ row.title }}</td>
-                    <td>{{ row.permissions__title }}</td>
-                    <td>{{ row.create_time|date:"Y-m-d H:i:s" }}</td>
+                    <td>{{ row.pk }}</td>
+                    <td>{{ row.fields.title }}</td>
+                    <td>{{ row.fields.permissions|length }}</td>
                     <td>
                         <a style="color: #333333;" href="/rbac/role/edit/{{ row.id }}/">
                             <i class="fa fa-edit" aria-hidden="true"></i></a>
