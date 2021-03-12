@@ -28,6 +28,12 @@ class AuthView(ViewSetMixin, APIView):
         :param kwargs:
         :return:
         """
+        action = request.data.get('action')
+
+        # 登出
+        if action == 'logout':
+            request.session.flush()
+            return render(request, 'auth.html')
 
         # 1. 校验用户登录
         username = request.data.get('username')
