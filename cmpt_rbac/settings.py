@@ -173,6 +173,7 @@ FILE_UPLOAD_DIRECTORY_PERMISSIONS = None
 PERMISSION_SESSION_KEY = "permission_dict"
 MENU_SESSION_KEY = "menu_dict"
 VALID_URL = [
+    '^/$',
     '/favicon.ico',
     '^/auth/$',
     '^/login/$',
