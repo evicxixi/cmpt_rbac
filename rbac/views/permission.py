@@ -9,8 +9,16 @@ from rbac.service.routes import get_all_url_dict
 
 from rbac.utils import decorator
 
-def permission_list(request):
 
+def permission_list(request):
+    '''权限列表
+
+    Arguments:
+        request {[type]} -- [description]
+
+    Returns:
+        [type] -- [description]
+    '''
     user_list = models.UserInfo.objects.all()
     role_list = models.Role.objects.all()
     menu_list = models.Menu.objects.all()
@@ -19,6 +27,14 @@ def permission_list(request):
 
 
 def permission_add(request):
+    '''添加权限
+
+    Arguments:
+        request {[type]} -- [description]
+
+    Returns:
+        [type] -- [description]
+    '''
     if request.method == "GET":
         form = rbac.forms.permission.Permission()    # get时生成空表单 并渲染到前端
     else:
@@ -33,6 +49,15 @@ def permission_add(request):
 
 
 def permission_edit(request, id):
+    '''编辑权限
+
+    Arguments:
+        request {[type]} -- [description]
+        id {[type]} -- [description]
+
+    Returns:
+        [type] -- [description]
+    '''
     if request.method == "GET":
         permission_obj = models.Permission.objects.filter(id=id).first()
         form = rbac.forms.permission.Permission(
