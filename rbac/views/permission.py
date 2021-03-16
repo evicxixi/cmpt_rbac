@@ -73,7 +73,18 @@ def permission_edit(request, id):
 
 
 def permission_del(request, id):
-    pass
+    '''删除权限
+
+    Arguments:
+        request {[type]} -- [description]
+        id {[type]} -- [description]
+
+    Returns:
+        [type] -- [description]
+    '''
+    obj = models.Permission.objects.get(pk=id)
+    obj.delete()
+    return redirect('/rbac/permission/list/')
 
 
 @decorator.timekeep
