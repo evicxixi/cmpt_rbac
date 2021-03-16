@@ -24,10 +24,10 @@
                     <td>{{ row.fields.title }}</td>
                     <td>{{ row.fields.permissions|length }}</td>
                     <td>
-                        <a style="color: #333333;" href="/rbac/role/edit/{{ row.id }}/">
+                        <a style="color: #333333;" href="/rbac/role/edit/{{ row.pk }}/">
                             <i class="fa fa-edit" aria-hidden="true"></i></a>
                         |
-                        <a style="color: #d9534f;" href="/rbac/role/del/{{ row.id }}/"><i class="fa fa-trash-o"></i></a>
+                        <a style="color: #d9534f;" href="/rbac/role/del/{{ row.pk }}/"><i class="fa fa-trash-o"></i></a>
                     </td>
 
                 </tr>

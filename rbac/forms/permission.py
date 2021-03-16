@@ -58,3 +58,11 @@ class MultiPermission(forms.Form):
         if menu and pid:
             raise forms.ValidationError('菜单和根权限同时只能选择一个')
         return pid
+
+    def clean(self):
+        parent = self.cleaned_data['parent']
+        self.cleaned_data['parent'] = models.Permission.objects.get(pk=parent)
+
+        menu = self.cleaned_data['menu']
+        self.cleaned_data['menu'] = models.Menu.objects.get(pk=menu)
+        # print('clean', parent, menu)
