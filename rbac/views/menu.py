@@ -5,6 +5,30 @@ from django.db.models import Q
 
 
 def menu_list(request):
+    '''菜单和权限列表
+
+    Returns:
+        [dict] -- [权限二级数据结构]
+        {
+          1:
+          {
+            'id': 1,
+            'title': '查看客户列表',
+            'url': '/customer/list/',
+            'name': 'customer_list',
+            'children': [
+            {
+              'id': 2,
+              'title': '添加客户',
+              'url': '/customer/add/',
+              'name': 'customer_add'
+            },
+            ...
+            ]
+          },
+          ...
+        }
+    '''
 
     id = int(request.GET.get('id', 0))
     # ret = id
@@ -15,20 +39,20 @@ def menu_list(request):
     # print('ret', type(ret), ret)
 
     # 获取指定menu.id的permission.id
-    if not id:   # 获取所有menu的二级及三级菜单
-        permission_queryset = models.Permission.objects.all().values(
-            'id', 'title', 'url', 'parent', 'name')
-    else:   # 获取指定menu.id的二级及三级菜单
-        mid = models.Permission.objects.filter(menu_id=id).first().id
-        # ret = mid
-        # print('ret', type(ret), ret)
-        permission_queryset = models.Permission.objects.filter(Q(menu_id=id) | Q(parent_id=mid)).values(
-            'id', 'title', 'url', 'parent', 'name')
+    if not id:   # 获取所有menu(包括二级、三级菜单)
+        permission_queryset = models.Permission.objects.all().values()
+        # print('permission_queryset', type(
+        #     permission_queryset), permission_queryset)
+    else:   # 获取指定menu.id的1个二级菜单、和parent是二级菜单的三级菜单
+        parent_id = models.Permission.objects.filter(menu_id=id).first().id
+        permission_queryset = models.Permission.objects.filter(
+            Q(menu_id=id) | Q(parent_id=parent_id)).values()
+        # print('parent_id', type(parent_id), parent_id, permission_queryset)
 
     # 构造权限二级数据结构
     permission_dict = {}
     for item in permission_queryset:
-        if not item['parent']:
+        if not item['parent_id']:
             permission_dict[item['id']] = {
                 'id': item['id'],
                 'title': item['title'],
@@ -37,20 +61,22 @@ def menu_list(request):
                 'children': [],
             }
     for item in permission_queryset:
-        if item['parent']:
-            permission_dict[item['parent']]['children'].append({
+        if item['parent_id']:
+            permission_dict[item['parent_id']]['children'].append({
                 'id': item['id'],
                 'title': item['title'],
                 'url': item['url'],
                 'name': item['name'],
             })
-    ret = permission_dict
-    # print('permission_dict', type(ret), ret)
+
+    # print('permission_dict', type(permission_dict), permission_dict)
 
     return render(request, 'rbac/menu_list.html', locals())
 
 
 def menu_add(request):
+    '''添加菜单
+    '''
     if request.method == "GET":
         form = menu.Menu()    # get时生成空表单 并渲染到前端
     else:
@@ -64,6 +90,8 @@ def menu_add(request):
 
 
 def menu_edit(request, id):
+    '''编辑菜单
+    '''
     if request.method == "GET":
         menu_obj = models.Menu.objects.filter(id=id).first()
         form = menu.Menu(instance=menu_obj)    # get时生成空表单 并渲染到前端
